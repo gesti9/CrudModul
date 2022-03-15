@@ -1,9 +1,9 @@
 package kz.gesti9.crud.services;
 
 import kz.gesti9.crud.model.User;
+import kz.gesti9.crud.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import kz.gesti9.crud.repository.UserRepository;
 
 import java.util.List;
 
@@ -24,12 +24,16 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User  saveUser(User user){
+
+
+    public User  saveUser(User user, String ip ){
+
         return userRepository.save(user);
     }
 
     public void deleteById(Long id){
          userRepository.deleteById(id);
     }
+
 
 }

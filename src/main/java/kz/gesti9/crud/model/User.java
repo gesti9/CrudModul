@@ -1,7 +1,6 @@
 package kz.gesti9.crud.model;
 
 import lombok.Data;
-import lombok.Generated;
 
 import javax.persistence.*;
 
@@ -24,4 +23,6 @@ public class User {
     private Integer phoneNumber;
     @Column(name = "email")
     private String email;
+    @Column(name = "nation")
+    private String nation;
 }

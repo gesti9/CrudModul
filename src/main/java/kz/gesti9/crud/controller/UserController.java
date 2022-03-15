@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import kz.gesti9.crud.services.UserService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -29,8 +30,9 @@ public class UserController {
 
     @PostMapping("/create")
     @ResponseBody
-    public void createUser(@RequestBody  User user){
-        userService.saveUser(user);
+    public void createUser(@RequestBody  User user, HttpServletRequest request){
+        userService.saveUser(user,request.getRemoteAddr());
+
     }
 
     @GetMapping("/user-delete/{id}")
@@ -42,7 +44,7 @@ public class UserController {
     @ResponseBody
     public void updateUser(@PathVariable("id") Long id, @RequestBody User user){
         User user1 = userService.findById(id);
-        user1 = userService.saveUser(user);
+        user1 = userService.saveUser(user,"name");
     }
 
 }
